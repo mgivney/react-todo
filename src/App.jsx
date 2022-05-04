@@ -9,6 +9,7 @@ function Todo({ todo, index, markTodo, removeTodo }) {
       <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
       <div>
         <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '}
+        <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
       </div>
     </div>
   );
@@ -55,8 +56,6 @@ function App() {
       text: "World Domination",
       isDone: false
     }
-
-
   ]);
 
   const addTodo = text => {
@@ -67,6 +66,12 @@ function App() {
   const markTodo = index => {
     const newTodos = [...todos];
     newTodos[index].isDone = true;
+    setTodos(newTodos);
+  };
+
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
@@ -84,6 +89,7 @@ function App() {
                 index={index}
                 todo={todo}
                 markTodo={markTodo}
+                removeTodo={removeTodo}
                 />
               </Card.Body>
             </Card>
