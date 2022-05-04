@@ -38,6 +38,10 @@ function FormTodo({ addTodo }) {
 }
 
 function App() {
+
+  const BASE_URL = process.env.REACT_TODO_API_ENDPOINT
+  console.log(BASE_URL)
+
   const [todos, setTodos] = React.useState([
     {
       text: "Build React Todo App",
